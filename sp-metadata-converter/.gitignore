@@ -1,0 +1,6 @@
+target
+common/target
+core/target
+fit/target
+nb-configuration.xml
+fit/src/main/resources/docker/*.zip

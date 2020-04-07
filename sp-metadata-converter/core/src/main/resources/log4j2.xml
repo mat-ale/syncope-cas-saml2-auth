@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<configuration status="INFO">
+
+  <appenders>
+    
+    <RollingRandomAccessFile name="mainFile" fileName="${log.directory}/core.log"
+                             filePattern="${log.directory}/core-%d{yyyy-MM-dd}.log.gz"
+                             immediateFlush="false" append="true">
+      <PatternLayout>
+        <pattern>%d{HH:mm:ss.SSS} %-5level %logger - %msg%n</pattern>
+      </PatternLayout>
+      <Policies>
+        <TimeBasedTriggeringPolicy/>
+        <SizeBasedTriggeringPolicy size="250 MB"/>
+      </Policies>
+    </RollingRandomAccessFile>
+    
+  </appenders>
+  
+  <loggers>
+    
+    <asyncLogger name="app.sp.metadata.converter" additivity="false" level="DEBUG">
+      <appender-ref ref="mainFile"/>
+    </asyncLogger>
+
+    <root level="DEBUG">
+      <appender-ref ref="mainFile"/>
+    </root>
+    
+  </loggers>
+</configuration>
